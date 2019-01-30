@@ -1,3 +1,22 @@
+/*
+  tv_remote_based_automatic_door
+
+  This example shows how to create a automated Door
+  
+
+  
+
+  created June 2018
+  by M.Himamsu
+  modified June 2018
+  by M.Himamsu 
+
+
+*/
+
+
+
+
 #include <IRremote.h>
 
 const int RECV_PIN = 6;
@@ -10,12 +29,12 @@ void setup(){
   Serial.begin(9600);
   irrecv.enableIRIn();
   irrecv.blink13(true);
-    pinMode(2, OUTPUT);
-   pinMode(3, OUTPUT);
-    pinMode(4, INPUT);
-      pinMode(5, OUTPUT);
-        pinMode(7, INPUT);
-          pinMode(9, OUTPUT);
+    pinMode(2, OUTPUT);   //Motor 1 
+   pinMode(3, OUTPUT);    //Motor 1
+    pinMode(4, INPUT);     //Door opening switch
+      pinMode(5, OUTPUT);  //Motor 2
+        pinMode(7, INPUT);   //Door Checking Switch or heat sink piece
+          pinMode(9, OUTPUT); //Motor 2
 }
 
 void loop(){
@@ -45,11 +64,11 @@ void loop(){
                 Serial.println(b);
                 }
                 
-          Serial.println("qwertyuiop");
+          //Serial.println("qwertyuiop");
           analogWrite(A0,150);
              delay(1000);
              
-           digitalWrite(2, HIGH);   // turn the LED on (HIGH is the voltage level)
+           digitalWrite(2, HIGH);  
            delay(1000); 
         digitalWrite(2,LOW);
         analogWrite(A0,0);
@@ -62,12 +81,12 @@ void loop(){
           { analogWrite(A0,150);
             delay(1000);
             digitalWrite(5, HIGH); 
-            digitalWrite(3, HIGH);    // turn the LED off by making the voltage LOW
-                  delay(1000);                       // wait for a second
+            digitalWrite(3, HIGH);    
+                  delay(1000);                     
              digitalWrite(3, LOW);
              analogWrite(A0,0);
                 digitalWrite(5, LOW);
-             //delay(5000);
+             
             himam=0;
             continue;
             }
